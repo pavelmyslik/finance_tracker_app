@@ -1,5 +1,5 @@
 <h1>My Portfolio</h1>
-<%#= turbo_frame_tag :form do %>
+<%= turbo_frame_tag :form do %>
   <div class="search-area">
     <h3>Search Stocks</h3>
     <%= form_with url: "/search_stock", local: false, method: :get do |f| %>
@@ -15,7 +15,9 @@
       </div>
     <% end %>
   </div>
-  <div id="results">
-    <%= render 'users/result' %>
-  </div>
-<%# end %>
+  <%= render 'users/result' %>
+  <% if !@tracked_stocks.empty? %>
+    <%= render 'stocks/stock_table' %>
+  <% end %>
+<% end %>
+
