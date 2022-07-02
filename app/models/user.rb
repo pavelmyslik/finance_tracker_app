@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def can_track_stock?(ticker_symbol)
     under_stock_limit? && !tracking_stock?(ticker_symbol)
   end
+
+  def full_name
+    first_name || last_name ? "#{first_name} #{last_name}" : "Anonymous"
+  end
 end
