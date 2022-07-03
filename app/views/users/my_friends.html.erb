@@ -1,0 +1,22 @@
+<h1>My Friends</h1>
+<%= turbo_frame_tag :form do %>
+  <div class="search-area">
+    <h3>Search Friends</h3>
+    <%= form_with url: "/search_friend", local: false, method: :get do |f| %>
+      <div class="form-group row">
+        <div class="col-sm-9 no-right-padding">
+          <%= text_field_tag :friend, params[:friend], placeholder: "Search your friend", autofocus: true, class: "form-control form-control-lg" %>
+        </div>
+        <div class="col-sm-3 no-left-padding">
+          <%= button_tag type: :submit, class: "btn btn-success" do %>
+            <%= fa_icon 'search 2x' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'users/friend_result' %>
+  <% if !@followed_friends.empty? %>
+    <%= render "users/friendlist" %>
+  <% end %>
+<% end %>
