@@ -8,7 +8,7 @@
           <td><strong>Email: </strong> <%= friend.email %></td>
           <td><strong>Actions: </strong> <%= link_to 'View Profile', user_path(friend), class: "btn btn-success btn-sm" %>
             <% if current_user.not_friends_with?(friend.id) %>
-              <%= button_to 'Follow', friendships_path(friend: friend), class: "btn btn-success btn-sm", method: :post %>
+              <%= button_to 'Follow', friendships_path(friend: friend), class: "btn btn-success btn-sm", form: {style: 'display:inline-block;'}, method: :post %>
             <% else %>
             <span class="badge bg-secondary">
               You are friends

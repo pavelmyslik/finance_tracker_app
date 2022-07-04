@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if !params[:friend].empty?
       @friends = User.search(params[:friend])
       @friends = current_user.except_current_user(@friends)
-      if @friends
+      if !@friends.empty?
         @followed_friends = current_user.friends
         render 'users/my_friends'
       else
